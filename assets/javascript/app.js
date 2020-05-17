@@ -8,7 +8,7 @@ $(document).ready(function () {
 function displayInfo() {
     $('#image-view').empty();
     var topic = $(this).attr('data-name');
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=wHxQzMuQcKWECKHKakPGIxKyM4TauzkN";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=wHxQzMuQcKWECKHKakPGIxKyM4TauzkN&limit=5";
 
     // AJAX call to GET information 
     $.ajax({
@@ -31,12 +31,10 @@ function displayInfo() {
             var results = response.data;
             for (var j = 0; j < results.length; j++) {
                 // Create new Div
-                var newTopicDiv = $("<div class='starTrekCharacter'>");
+                var newTopicDiv = $("<div class='starTrek'>");
                 // Save responses from API into variables and add to DOM
                 // GIF Rating
                 var pRating = $('<p>').text('Rating: ' + results[j].rating.toUpperCase());
-                // GIF Title
-                var pTitle = $('<p>').text('Title: ' + results[j].title.toUpperCase());
                 // GIF URL
                 var gifURL = results[j].images.fixed_height_still.url;
                 var gif = $('<img>');
@@ -47,7 +45,6 @@ function displayInfo() {
                 gif.addClass('animate-gif');
                 // Appending info 
                 newTopicDiv.append(pRating);
-                newTopicDiv.append(pTitle);
                 newTopicDiv.append(gif);
                 // Putting the saved info to new div
                 $('#image-view').prepend(newTopicDiv);
@@ -97,8 +94,8 @@ function playGif() {
 $("#add-trek").on("click", function (event) {
     event.preventDefault();
     // capture input from the form
-    var starTrek = $("#startrek-form").val().trim();
-    // check if topic exsits already
+    var starTrek = $("#startrek-input").val().trim();
+    // check if topic exists already
     if (topics.toString().toLowerCase().indexOf(starTrek.toLowerCase()) != -1) {
         alert("Topic already exists");
     } else {
