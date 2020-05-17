@@ -1,3 +1,8 @@
+.container {
+    margin-bottom: 50px;
+    align-content: center;
+}
+
 .topic {
     margin: 10px;
 }
@@ -5,4 +10,17 @@
 .buttons-view {
     padding: 10px;
 
+}
+
+#startrek-form {
+    float: left;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: black;
+    color: white;
 }
