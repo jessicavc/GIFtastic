@@ -8,7 +8,7 @@ $(document).ready(function () {
 function displayInfo() {
     $('#image-view').empty();
     var topic = $(this).attr('data-name');
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=wHxQzMuQcKWECKHKakPGIxKyM4TauzkN";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=wHxQzMuQcKWECKHKakPGIxKyM4TauzkN";
 
     // AJAX call to GET information 
     $.ajax({
@@ -97,7 +97,7 @@ function playGif() {
 $("#add-trek").on("click", function (event) {
     event.preventDefault();
     // capture input from the form
-    var starTrek = $("#startrek-input").val().trim();
+    var starTrek = $("#startrek-form").val().trim();
     // check if topic exsits already
     if (topics.toString().toLowerCase().indexOf(starTrek.toLowerCase()) != -1) {
         alert("Topic already exists");
